@@ -117,7 +117,7 @@ function updateClock() {
 
 async function loadIconRules() {
     try {
-        const res = await fetch('/icons_rule.yaml');
+        const res = await fetch('/static/icons_rule.yaml');
         if (res.ok) {
             const text = await res.text();
             const lines = text.split('\n');
