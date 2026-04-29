@@ -16,6 +16,7 @@
 const FALLBACK_ICON = window.AppConfig.fallbackIcon;
 const CUSTOM_FOLDER_ICON = window.AppConfig.folderIcon;
 const ICON_CDN = window.AppConfig.iconCdn;
+const ICON_MODE = window.AppConfig.iconMode;
 const UI_CONF = window.AppConfig.uiConfig;
 
 let tree = null, activePath = [], openPanels = [], modalMode = '';
@@ -218,7 +219,9 @@ function resolveIcon(node) {
 async function init() { 
     updateLayout();
     setupNoteUI();
-    await loadIconRules();
+    if (ICON_MODE === 'url') {
+        await loadIconRules();
+    }
     
     if (window.__PRELOADED_TREE__) { tree = window.__PRELOADED_TREE__; render(); }
     showLoading();
